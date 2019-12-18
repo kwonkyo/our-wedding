@@ -31,7 +31,7 @@ function App() {
         </Switch>
       </Router>
       <div className="Footer">
-        This website is designed by © Hee Hyun and Victor.
+        This website was made by © Hee Hyun and Victor.
       </div>
     </div>
   );
