@@ -30,6 +30,9 @@ function App() {
           <Route exact path='/rsvp' component={RSVP}/>
         </Switch>
       </Router>
+      <div className="Footer">
+        This website is designed by © Hee Hyun and Victor.
+      </div>
     </div>
   );
 }
