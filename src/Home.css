@@ -1,0 +1,74 @@
+.Monogram {
+    height: 120px;
+    width: 100%;
+}
+
+.Monogram img {
+    position: relative;
+    float: left;
+    width: 7vw;
+    min-width: 70px;
+    top: 20px;
+    left: 20px;
+    opacity: 0.8;
+}
+
+.Banner {
+    position: relative;
+}
+
+.Banner .PrimaryText {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+.Banner .HighlightedText {
+    color: white;
+}
+
+.Banner .OurNames {
+    font-size: 35px;
+    color: white;
+    position: relative;
+    top: 30px;
+}
+
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both
+}
+
+.animatedFadeInUp {
+    opacity: 0
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
