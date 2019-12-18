@@ -7,14 +7,16 @@ export class Home extends React.Component {
         return (
             <div className="Home">
                 <div className="Banner">
-                    <ReactFitText compressor={.4}>
+                    <ReactFitText compressor={.5}>
                         <h1 className="PrimaryText animated animatedFadeInUp fadeInUp">
                             We are getting <span className="HighlightedText">married</span>
                         </h1>
                     </ReactFitText>
-                    <h2 className="OurNames animated animatedFadeInUp fadeInUp">
-                        hee hyun & victor
-                    </h2>
+                </div>
+                <div className="OurNames">
+                    <ReactFitText compressor={1} maxFontSize={21}>
+                        <p>Hee Hyun & Victor</p>
+                    </ReactFitText>
                 </div>
             </div>
         );

@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+.Home {
+    height: 100%;
+}
+
 .Banner {
     position: relative;
 }
@@ -9,13 +15,17 @@
 
 .Banner .HighlightedText {
     color: white;
+    font-style: italic;
 }
 
-.Banner .OurNames {
-    font-size: 35px;
-    color: white;
+.OurNames {
     position: relative;
-    top: 30px;
+    top: 20%;
+    margin: auto;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: white;
 }
 
 

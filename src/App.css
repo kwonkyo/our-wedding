@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Satisfy&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lora:400,400i&display=swap');
 
 .App {
   text-align: center;
-  font-family: 'Satisfy';
+  font-family: 'Lora', serif;
 
   background: url('/static/home-bg-desktop.jpg') no-repeat center center fixed;
   width: 100%;
@@ -14,19 +15,57 @@
   background-size: cover;
 }
 
-.Monogram {
+.Header {
   height: 120px;
   width: 100%;
 }
 
-.Monogram img {
+.Monogram {
   position: relative;
   float: left;
-  width: 7vw;
+  width: 6vw;
   min-width: 70px;
   top: 20px;
   left: 20px;
   opacity: 0.8;
+}
+
+.Monogram:hover {
+  opacity: 1
+}
+
+.RSVPLink {
+  text-decoration: none;
+}
+
+.RSVPButton {
+  position: relative;
+  top: 20px;
+  right: 20px;
+  border: 2px solid white;
+  border-radius: 3px;
+  width: 90px;
+  height: 40px;
+  float: right; 
+}
+
+.RSVPButton:hover {
+  background-color: white;
+  opacity: 0.9;
+}
+
+.RSVPButton span {
+  display: table-cell;
+  height: inherit;
+  margin: auto;
+  width: 50%;
+  font-size: 18px;
+  color: white;
+  vertical-align: middle;
+}
+
+.RSVPButton span:hover {
+  color: black;
 }
 
 @media (max-width: 1024px) {
