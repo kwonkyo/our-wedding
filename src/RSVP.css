@@ -1,12 +1,12 @@
 .Title h1 {
-    margin: 20px;
     font-size: 100px;
+    margin-bottom: 0;
     color: white;
 }
 
 .Form {
     position: relative;
-    top: 20px;
+    top: 50px;
     width: 32%;
     min-width: 350px;
     margin: auto;
@@ -22,7 +22,13 @@
     color: black !important;
 }
 
-.ModifyGuests {
+.Submit {
     position: relative;
-    top: .25vh;
+    top: 1vh;
 }
+
+@media (max-height: 1024px) {
+    .Form {
+        top: 5px;
+    }
+  }

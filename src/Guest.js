@@ -25,7 +25,7 @@ export class Guest extends React.Component {
 
         this.setState({
             formData: this.state.formData
-        }, () => console.log(this.state.formData));
+        });
 
         e.stopPropagation();
     }

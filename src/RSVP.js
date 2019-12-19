@@ -35,6 +35,7 @@ export class RSVP extends React.Component {
         this.handleAddGuest = this.handleAddGuest.bind(this);
         this.handleDeleteActiveGuest = this.handleDeleteActiveGuest.bind(this);
         this.handleSelectGuest = this.handleSelectGuest.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSelectGuest(index) {
@@ -85,6 +86,10 @@ export class RSVP extends React.Component {
         });
     }
 
+    handleSubmit() {
+        console.log(this.state.guests);
+    }
+
     render() {
         let deleteActiveGuestButton = this.state.activeGuestIndex == 0 ? null : (
             <Col>
@@ -93,6 +98,16 @@ export class RSVP extends React.Component {
                     variant="danger"
                     style={{opacity: .95}}>Delete Guest</Button>
             </Col>
+        );
+
+        let submitButton = this.state.activeGuestIndex > 0 ? null : (
+            <Form.Row className="Submit">
+                <Col>
+                    <Button onClick={this.handleSubmit}>
+                        RSVP!
+                    </Button>
+                </Col>
+            </Form.Row>
         );
 
         return (
@@ -130,6 +145,7 @@ export class RSVP extends React.Component {
                             </Button>
                         </Col>
                     </Form.Row>
+                    { submitButton }
                 </Form>
                 </div>
             </div>
