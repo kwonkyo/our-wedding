@@ -102,7 +102,6 @@ export class Guest extends React.Component {
                             onChange={this.handleOnChange}
                             name={"guest-" + this.state.index + "-details"}
                             value={this.state.formData["details"]}/>
-                        />
                     </Col>
                 </Form.Row>
             </div>
