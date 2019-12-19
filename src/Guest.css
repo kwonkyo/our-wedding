@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+.Form {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.FormRow {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+label {
+    float: left;
+    color: white;
+    font-size: 16px;
+    margin-bottom: 1px !important;
+}
+
+.AgeGroup .col {
+    text-align: right;
+}

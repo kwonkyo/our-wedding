@@ -3,3 +3,26 @@
     font-size: 100px;
     color: white;
 }
+
+.Form {
+    position: relative;
+    top: 20px;
+    width: 32%;
+    min-width: 350px;
+    margin: auto;
+    opacity: .95;
+}
+
+.Form .nav-link {
+    font-weight: bolder;
+    color: white !important;
+}
+
+.Form .nav-link.active {
+    color: black !important;
+}
+
+.ModifyGuests {
+    position: relative;
+    top: .25vh;
+}
