@@ -87,7 +87,7 @@ export class RSVP extends React.Component {
     }
 
     handleSubmit() {
-        console.log(this.state.guests);
+        console.log(this.state.guests.map(g => g.formData));
     }
 
     render() {
