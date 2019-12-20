@@ -34,27 +34,24 @@
   opacity: 1
 }
 
-.RSVPLink {
-  text-decoration: none;
-}
-
-.RSVPButton {
+.Nav {
   position: relative;
   top: 20px;
   right: 20px;
-  border: 2px solid white;
-  border-radius: 3px;
-  width: 90px;
+  float: right;
+}
+
+.Nav a {
+  text-decoration: none !important;
+}
+
+.Nav .NavButton {
+  display: inline-block;
   height: 40px;
-  float: right; 
+  width: 90px;
 }
 
-.RSVPButton:hover {
-  background-color: white;
-  opacity: 0.9;
-}
-
-.RSVPButton span {
+.Nav span {
   display: table-cell;
   height: inherit;
   margin: auto;
@@ -64,15 +61,25 @@
   vertical-align: middle;
 }
 
-.RSVPButton span:hover {
+.RSVPButton {
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
+.RSVPButton:hover {
+  background-color: white;
+  opacity: 0.9;
+}
+
+.NavButton span:hover {
   color: black;
 }
 
 .Footer {
   position: absolute;
-  bottom: 10px;
+  bottom: 3px;
   right: 10px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
 }
 

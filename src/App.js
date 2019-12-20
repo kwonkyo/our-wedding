@@ -18,11 +18,18 @@ function App() {
           <Link to="/">
             <img className="Monogram" src="android-chrome-512x512.png"/>
           </Link>
-          <Link className="RSVPLink" to="/rsvp">
-            <div className="RSVPButton">
-              <span>RSVP</span>
-            </div>
-          </Link>
+          <div className="Nav">
+            <Link to="/details">
+              <div className="NavButton">
+                <span>Details</span>
+              </div>
+            </Link>
+            <Link to="/rsvp">
+              <div className="NavButton RSVPButton">
+                <span>RSVP</span>
+              </div>
+            </Link>
+          </div>
         </div>
 
         <Switch>

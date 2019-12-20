@@ -6,7 +6,7 @@
 
 .Form {
     position: relative;
-    top: 50px;
+    top: 6vh;
     width: 32%;
     min-width: 350px;
     margin: auto;
@@ -24,11 +24,5 @@
 
 .Submit {
     position: relative;
-    top: 1vh;
+    top: 2vh;
 }
-
-@media (max-height: 1024px) {
-    .Form {
-        top: 5px;
-    }
-  }
