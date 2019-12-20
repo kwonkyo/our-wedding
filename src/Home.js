@@ -14,9 +14,12 @@ export class Home extends React.Component {
                     </ReactFitText>
                 </div>
                 <div className="OurNames">
-                    <ReactFitText compressor={1} maxFontSize={21}>
+                    <ReactFitText compressor={1} maxFontSize={25}>
                         <p>Hee Hyun & Victor</p>
                     </ReactFitText>
+                    <div className="Footer">
+                        This website was made by © Hee Hyun and Victor with love.
+                    </div>
                 </div>
             </div>
         );
