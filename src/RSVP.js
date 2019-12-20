@@ -12,6 +12,8 @@ import { Guest } from './Guest.js';
 import { uuid } from 'uuidv4';
 
 export class RSVP extends React.Component {
+    MAX_GUESTS_PER_PRIMARY = 3;
+
     constructor(props) {
         super(props);
 
@@ -26,7 +28,10 @@ export class RSVP extends React.Component {
                         "age-group": "adult",
                         "first-name": "",
                         "last-name": "",
-                        "details": ""
+                        "details": "",
+                        "reception": "attending",
+                        "kids-menu": "not-required",
+                        "high-chair": "not-required"
                     }
                 }
             ]
@@ -91,12 +96,22 @@ export class RSVP extends React.Component {
     }
 
     render() {
+        let addGuestButton = this.state.activeGuestIndex >= this.MAX_GUESTS_PER_PRIMARY
+            ? null
+            : (
+                <Col>
+                    <Button onClick={this.handleAddGuest} variant="light">
+                        Add Another Invitee
+                    </Button>
+                </Col>
+            );
+
         let deleteActiveGuestButton = this.state.activeGuestIndex == 0 ? null : (
             <Col>
                 <Button
                     onClick={this.handleDeleteActiveGuest}
                     variant="danger"
-                    style={{opacity: .95}}>Delete Guest</Button>
+                    style={{opacity: .95}}>Delete Invitee</Button>
             </Col>
         );
 
@@ -139,11 +154,7 @@ export class RSVP extends React.Component {
                     </Tabs>
                     <Form.Row className="ModifyGuests">
                         { deleteActiveGuestButton }
-                        <Col>
-                            <Button onClick={this.handleAddGuest} variant="light">
-                                Add a Plus One
-                            </Button>
-                        </Col>
+                        { addGuestButton }
                     </Form.Row>
                     { submitButton }
                 </Form>
