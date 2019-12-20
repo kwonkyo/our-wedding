@@ -7,10 +7,11 @@
 .Form {
     position: relative;
     top: 6vh;
-    width: 32%;
+    width: 33%;
     min-width: 350px;
     margin: auto;
     opacity: .95;
+    padding: 5px;
 }
 
 .Form .nav-link {
@@ -22,7 +23,10 @@
     color: black !important;
 }
 
+.Form .ModifyGuests {
+    margin-top: 15px;
+}
+
 .Submit {
-    position: relative;
-    top: 2vh;
+    margin-top: 20px;
 }
