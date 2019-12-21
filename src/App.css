@@ -13,7 +13,6 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  overflow: auto !important;
 }
 
 .Header {
@@ -74,6 +73,12 @@
 
 .NavButton span:hover {
   color: black;
+}
+
+.Title h1 {
+  font-size: 100px;
+  margin-bottom: 0;
+  color: white;
 }
 
 .Footer {

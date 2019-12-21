@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { Home } from './Home.js';
 import { RSVP } from './RSVP.js';
+import { Details } from './Details.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -35,6 +36,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path='/rsvp' component={RSVP}/>
+          <Route exact path='/details' component={Details}/>
         </Switch>
       </Router>
     </div>
