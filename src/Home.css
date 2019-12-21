@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
 
-.Home {
-    height: 100%;
-}
-
 .Banner {
     position: relative;
 }
@@ -20,7 +16,7 @@
 
 .OurNames {
     position: relative;
-    top: 20%;
+    top: 20vh;
     margin: auto;
     width: 100%;
     font-family: 'Playfair Display', serif;
