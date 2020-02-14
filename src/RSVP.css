@@ -21,6 +21,16 @@
     margin-top: 15px;
 }
 
+.Authenticate {
+    margin-top: 50px;
+}
+
+.FamilyId {
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
 .Submit {
     margin-top: 20px;
 }

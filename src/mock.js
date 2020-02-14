@@ -1,4 +1,3 @@
-let MOCK_FAMILY_ID = "Kwon";
 let MOCK_FAMILY = [
     {
         index: 0,
@@ -38,8 +37,8 @@ let MOCK_FAMILY = [
     },
 ]
 
-
-export { 
-    MOCK_FAMILY_ID,
-    MOCK_FAMILY
-};
+export default function fetchFamily(familyId) {
+    return {
+        KWON: MOCK_FAMILY
+    }[familyId]
+}
