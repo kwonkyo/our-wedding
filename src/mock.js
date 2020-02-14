@@ -9,9 +9,7 @@ let MOCK_FAMILY = [
             "first-name": "Kyo Jin",
             "last-name": "Kwon",
             "details": "Dishes should be served by AI cat.",
-            "reception": "attending",
-            "kids-menu": "not-required",
-            "high-chair": "not-required"
+            "reception": "attending"
         }
     },
     {
@@ -23,9 +21,7 @@ let MOCK_FAMILY = [
             "first-name": "Hee Hyun",
             "last-name": "Kim",
             "details": "I need a bib.",
-            "reception": "attending",
-            "kids-menu": "not-required",
-            "high-chair": "not-required"
+            "reception": "attending"
         }
     },
     {
@@ -37,9 +33,7 @@ let MOCK_FAMILY = [
             "first-name": "Little Hee Hyun",
             "last-name": "Kwon",
             "details": "I also need a bib.",
-            "reception": "attending",
-            "kids-menu": "required",
-            "high-chair": "required"
+            "reception": "attending"
         }
     },
 ]

@@ -46,14 +46,14 @@ export class Guest extends React.Component {
                             onChange={this.handleOnChange}
                             id={"guest-" + this.state.index + "-kids-menu"}
                             name={"guest-" + this.state.index + "-kids-menu"}
-                            value="required"
+                            value={(this.state.formData["kids-menu"] === "required" ? "not-" : "") + "required"}
                             checked={this.state.formData["kids-menu"] === "required"}/>
                         <Form.Check custom inline
                             label="High chair"
                             onChange={this.handleOnChange}
                             id={"guest-" + this.state.index + "-high-chair"}
                             name={"guest-" + this.state.index + "-high-chair"}
-                            value="required"
+                            value={(this.state.formData["high-chair"] === "required" ? "not-" : "") + "required"}
                             checked={this.state.formData["high-chair"] === "required"}/>
                     </Col>
                 </Form.Row>
