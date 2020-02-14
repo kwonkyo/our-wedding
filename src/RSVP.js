@@ -55,7 +55,9 @@ export class RSVP extends React.Component {
         let body = undefined;
         if (this.state.guests.length === 0) {
             body = (
-                <Form className="Authenticate">
+                <Form className="Form">
+                    <h3 style={{color: "white"}}>1. Let's start with your invite ID.</h3>
+                    <br/>
                     <Form.Row>
                         <Col>
                             <Form.Control
@@ -68,7 +70,7 @@ export class RSVP extends React.Component {
                                     }
                                 }
                                 name="familyId"
-                                placeholder="Enter your invitee ID here!"/>
+                                placeholder="Find your invite ID in your invitation!"/>
                         </Col>
                     </Form.Row>
                     <Form.Row className="Enter">
@@ -84,6 +86,8 @@ export class RSVP extends React.Component {
             body = (
                 <div className="Form">
                     <Form>
+                        <h3 style={{color: "white"}}>2. Okay, time to RSVP!</h3>
+                        <br/>
                         <Tabs
                             activeKey={this.state.activeGuestIndex}
                             onSelect={this.handleSelectGuest}>
