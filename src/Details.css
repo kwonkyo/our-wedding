@@ -1,5 +1,31 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap');
 
+.container {
+    margin: auto;
+    max-width: 500px;
+}
+
+.row {
+    margin: auto !important;
+    max-width: 400px;
+}
+
+.When {
+    position: relative;
+    top: 25px;
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: bold;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.When .Time {
+    color: #f9b862;
+    font-size: 25px;
+}
+
 .Where {
     position: relative;
     top: 25px;
@@ -11,16 +37,11 @@
     max-width: 100%;
 }
 
-.Where .Time {
-    color: #f9b862;
-    font-size: 25px;
-}
-
 .Where .Address {
     font-size: 17px;
 }
 
-.Where iframe {
+.Details iframe {
     width: 50vh;
     height: 40vh;
     min-width: 300px;
@@ -28,4 +49,5 @@
     max-width: 100%;
     margin-bottom: 50px;
     opacity: .85;
+    margin-top: 50px;
 }
