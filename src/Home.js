@@ -18,7 +18,7 @@ export class Home extends React.Component {
                         <p>Hee Hyun & Victor</p>
                     </ReactFitText>
                     <div className="Footer">
-                        This website was made by © Hee Hyun and Victor with love.
+                        This website was made with love by © Hee Hyun and Victor.
                     </div>
                 </div>
             </div>
