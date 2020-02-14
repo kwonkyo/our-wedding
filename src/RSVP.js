@@ -10,35 +10,18 @@ import {
 } from 'react-bootstrap';
 import { Guest } from './Guest.js';
 import { uuid } from 'uuidv4';
+import { MOCK_FAMILY_ID, MOCK_FAMILY } from './mock';
 
 export class RSVP extends React.Component {
-    MAX_GUESTS_PER_PRIMARY = 3;
-
     constructor(props) {
         super(props);
 
         this.state = {
             activeGuestIndex: 0,
-            guests: [
-                {
-                    index: 0,
-                    formData: {
-                        "is-primary-guest": true,
-                        "email": "",
-                        "age-group": "adult",
-                        "first-name": "",
-                        "last-name": "",
-                        "details": "",
-                        "reception": "attending",
-                        "kids-menu": "not-required",
-                        "high-chair": "not-required"
-                    }
-                }
-            ]
+            familyId: MOCK_FAMILY_ID,
+            guests: MOCK_FAMILY
         };
 
-        this.handleAddGuest = this.handleAddGuest.bind(this);
-        this.handleDeleteActiveGuest = this.handleDeleteActiveGuest.bind(this);
         this.handleSelectGuest = this.handleSelectGuest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -49,82 +32,11 @@ export class RSVP extends React.Component {
         });
     }
 
-    handleAddGuest() {
-        this.state.guests.push({
-            index: this.state.guests.length,
-            formData: {
-                "is-primary-guest": false,
-                "email": "",
-                "age-group": "adult",
-                "first-name": "",
-                "last-name": "",
-                "details": ""
-            }
-        });
-
-        this.setState({
-            guests: this.state.guests,
-            activeGuestIndex: this.state.guests.length - 1
-        });
-    }
-
-    handleDeleteActiveGuest() {
-        let filteredGuests = [];
-        for (let guest of this.state.guests) {
-            if (guest.index == this.state.activeGuestIndex) {
-                continue;
-            }
-            if (guest.index > this.state.activeGuestIndex) {
-                guest.index--;
-            }
-
-            filteredGuests.push(guest);
-        }
-
-        this.setState({
-            guests: filteredGuests,
-            activeGuestIndex: (
-                (this.state.activeGuestIndex == filteredGuests.length)
-                ? this.state.activeGuestIndex - 1
-                : this.state.activeGuestIndex
-            )
-        });
-    }
-
     handleSubmit() {
         console.log(this.state.guests.map(g => g.formData));
     }
 
     render() {
-        let addGuestButton = this.state.activeGuestIndex >= this.MAX_GUESTS_PER_PRIMARY
-            ? null
-            : (
-                <Col>
-                    <Button onClick={this.handleAddGuest} variant="light">
-                        Add Another Invitee
-                    </Button>
-                </Col>
-            );
-
-        let deleteActiveGuestButton = this.state.activeGuestIndex == 0 ? null : (
-            <Col>
-                <Button
-                    onClick={this.handleDeleteActiveGuest}
-                    variant="danger"
-                    style={{opacity: .95}}>Delete Invitee</Button>
-            </Col>
-        );
-
-        let submitButton = this.state.activeGuestIndex > 0 ? null : (
-            <Form.Row className="Submit">
-                <Col>
-                    <Button onClick={this.handleSubmit}>
-                        RSVP!
-                    </Button>
-                </Col>
-            </Form.Row>
-        );
-
         return (
             <div className="RSVP">
                 <div className="Title">
@@ -144,7 +56,7 @@ export class RSVP extends React.Component {
                                 <Tab
                                     eventKey={g.index}
                                     key={uuid()}
-                                    title={"Guest " + (g.index + 1)}>
+                                    title={g.formData['first-name']}>
                                 { <Guest
                                       index={g.index}
                                       formData={g.formData}/> }
@@ -152,11 +64,13 @@ export class RSVP extends React.Component {
                             )
                         }
                     </Tabs>
-                    <Form.Row className="ModifyGuests">
-                        { deleteActiveGuestButton }
-                        { addGuestButton }
+                    <Form.Row className="Submit">
+                        <Col>
+                            <Button onClick={this.handleSubmit}>
+                                RSVP!
+                            </Button>
+                        </Col>
                     </Form.Row>
-                    { submitButton }
                 </Form>
                 </div>
             </div>
