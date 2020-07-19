@@ -33,8 +33,8 @@ export class Guest extends React.Component {
     render() {
         let nonAdultAccomodationsComponent = (
             (
-                (this.state.formData["age-group"] == "adult") ||
-                (this.state.formData["reception"] != "attending")
+                (this.state.formData["age-group"] === "adult") ||
+                (this.state.formData["reception"] !== "attending")
             )
             ? null
             : (
@@ -95,7 +95,7 @@ export class Guest extends React.Component {
                             id={"guest-" + this.state.index + "-is-child"}
                             value="child"
                             checked={this.state.formData["age-group"] === "child"}
-                            disabled={this.state.index == 0}/>
+                            disabled={this.state.index === 0}/>
                         <Form.Check custom inline
                             type="radio"
                             label="Baby (<36 months)"
@@ -104,7 +104,7 @@ export class Guest extends React.Component {
                             id={"guest-" + this.state.index + "-is-baby"}
                             value="baby"
                             checked={this.state.formData["age-group"] === "baby"}
-                            disabled={this.state.index == 0}/>
+                            disabled={this.state.index === 0}/>
                     </Col>
                 </Form.Row>
                 <Form.Row className="FormRow Reception">
@@ -117,7 +117,7 @@ export class Guest extends React.Component {
                             name={"guest-" + this.state.index + "-reception"}
                             id={"guest-" + this.state.index + "-reception-attending"}
                             value="attending"
-                            checked={this.state.formData["reception"] == "attending"}/>
+                            checked={this.state.formData["reception"] === "attending"}/>
                         <Form.Check custom inline
                             type="radio"
                             label="No"
@@ -125,7 +125,7 @@ export class Guest extends React.Component {
                             name={"guest-" + this.state.index + "-reception"}
                             id={"guest-" + this.state.index + "-reception-not-attending"}
                             value="not-attending"
-                            checked={this.state.formData["reception"] == "not-attending"}/>
+                            checked={this.state.formData["reception"] === "not-attending"}/>
                     </Col>
                 </Form.Row>
                 { nonAdultAccomodationsComponent }
