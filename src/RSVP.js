@@ -8,9 +8,9 @@ import {
     Tabs,
     Button
 } from 'react-bootstrap';
-import { Guest } from './Guest.js';
 import { uuid } from 'uuidv4';
-import fetch_family from './mock';
+import { Guest } from './Guest.js';
+import { dynamodb, converter } from './aws.js';
 
 export class RSVP extends React.Component {
     constructor(props) {
@@ -18,7 +18,7 @@ export class RSVP extends React.Component {
 
         this.state = {
             activeGuestIndex: 0,
-            guests: []
+            family: null
         };
 
         this.handleSelectGuest = this.handleSelectGuest.bind(this);
@@ -34,26 +34,39 @@ export class RSVP extends React.Component {
     }
 
     handleSubmit() {
-        console.log(this.state.guests.map(g => g.formData));
+        console.log(this.state.family);
     }
 
     setFamilyId(e) {
         this.setState({
-            familyId: e.target.value
+            familyId: e.target.value.toLowerCase()
         });
     }
 
-    setFamily() {
-        let guests = fetch_family(this.state.familyId);
+    async setFamily() {
+        let response = await dynamodb
+            .getItem({
+                TableName: 'wedding-guests',
+                Key: {
+                    'family-id': {S: this.state.familyId}
+                }
+            })
+            .promise();
 
+        if (response.Item === undefined) {
+            // TODO: Handle invalid family ID
+            return;
+        }
+
+        let familyData = converter.unmarshall(response.Item);
         this.setState({
-            guests: guests
+            family: familyData
         });
     }
 
     render() {
         let body = undefined;
-        if (this.state.guests.length === 0) {
+        if (this.state.family === null) {
             body = (
                 <Form className="Form">
                     <h3 style={{color: "white"}}>1. Let's start with your invite ID.</h3>
@@ -63,9 +76,12 @@ export class RSVP extends React.Component {
                             <Form.Control
                                 className="FamilyId"
                                 onChange={this.setFamilyId}
-                                onKeyPress={(e) => {
+                                onKeyPress={async (e) => {
                                         if (e.charCode === 13) {
-                                            this.setFamily();
+                                            e.preventDefault();
+
+                                            await this.setFamily();
+                                            console.log('foo');
                                         }
                                     }
                                 }
@@ -75,7 +91,7 @@ export class RSVP extends React.Component {
                     </Form.Row>
                     <Form.Row className="Enter">
                         <Col>
-                            <Button onClick={this.setFamily}>
+                            <Button onClick={async () => await this.setFamily()}>
                                 Enter
                             </Button>
                         </Col>
@@ -92,14 +108,14 @@ export class RSVP extends React.Component {
                             activeKey={this.state.activeGuestIndex}
                             onSelect={this.handleSelectGuest}>
                             {
-                                this.state.guests.map(g => 
+                                this.state.family['members'].map(m => 
                                     <Tab
-                                        eventKey={g.index}
+                                        eventKey={m['index']}
                                         key={uuid()}
-                                        title={g.formData['first-name']}>
+                                        title={m['form-data']['first-name']}>
                                     { <Guest
-                                        index={g.index}
-                                        formData={g.formData}/> }
+                                        index={m['index']}
+                                        formData={m['form-data']}/> }
                                     </Tab>
                                 )
                             }

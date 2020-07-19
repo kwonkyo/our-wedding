@@ -25,13 +25,13 @@ export class Details extends React.Component {
                         <Col className="Ceremony">
                             <div className="When">
                                 <h3>Ceremony</h3>
-                                <p className="Time">13:30 - 15:00</p>
+                                <p className="Time">15:30 - 16:30</p>
                             </div>
                         </Col>
                         <Col className="Reception">
                             <div className="When">
                                 <h3>Reception</h3>
-                                <p className="Time">17:00 - 22:00</p>
+                                <p className="Time">17:00 - 21:00</p>
                             </div>
                         </Col>
                     </Row>
