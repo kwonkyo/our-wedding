@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import { uuid } from 'uuidv4';
 import { Guest } from './Guest.js';
-import { dynamodb, converter } from './aws.js';
+import { dynamodb, converter } from './services/aws.js';
 
 export class RSVP extends React.Component {
     constructor(props) {
@@ -23,8 +23,8 @@ export class RSVP extends React.Component {
 
         this.handleSelectGuest = this.handleSelectGuest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.setFamilyId = this.setFamilyId.bind(this);
-        this.setFamily = this.setFamily.bind(this);
+        this.handleFamilyIdChange = this.handleFamilyIdChange.bind(this);
+        this.handleSubmitFamilyId = this.handleSubmitFamilyId.bind(this);
     }
 
     handleSelectGuest(index) {
@@ -37,13 +37,13 @@ export class RSVP extends React.Component {
         console.log(this.state.family);
     }
 
-    setFamilyId(e) {
+    handleFamilyIdChange(e) {
         this.setState({
             familyId: e.target.value.toLowerCase()
         });
     }
 
-    async setFamily() {
+    async handleSubmitFamilyId() {
         let response = await dynamodb
             .getItem({
                 TableName: 'wedding-guests',
@@ -75,12 +75,12 @@ export class RSVP extends React.Component {
                         <Col>
                             <Form.Control
                                 className="FamilyId"
-                                onChange={this.setFamilyId}
+                                onChange={this.handleFamilyIdChange}
                                 onKeyPress={async (e) => {
                                         if (e.charCode === 13) {
                                             e.preventDefault();
 
-                                            await this.setFamily();
+                                            await this.handleSubmitFamilyId();
                                             console.log('foo');
                                         }
                                     }
@@ -91,7 +91,7 @@ export class RSVP extends React.Component {
                     </Form.Row>
                     <Form.Row className="Enter">
                         <Col>
-                            <Button onClick={async () => await this.setFamily()}>
+                            <Button onClick={async () => await this.handleSubmitFamilyId()}>
                                 Enter
                             </Button>
                         </Col>
