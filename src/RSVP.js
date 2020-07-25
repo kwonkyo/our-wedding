@@ -2,11 +2,7 @@ import React from 'react';
 import './RSVP.css';
 import ReactFitText from 'react-fittext';
 import {
-    Form,
-    Col,
-    Tab,
-    Tabs,
-    Button
+    Form, Col, Tab, Tabs, Button, Modal
 } from 'react-bootstrap';
 import { uuid } from 'uuidv4';
 import { Guest } from './Guest.js';
@@ -18,13 +14,17 @@ export class RSVP extends React.Component {
 
         this.state = {
             activeGuestIndex: 0,
-            family: null
+            family: null,
+            showUnknownGuestMessage: false,
+            showRSVPCompleteMessage: false
         };
 
         this.handleSelectGuest = this.handleSelectGuest.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFamilyIdChange = this.handleFamilyIdChange.bind(this);
         this.handleSubmitFamilyId = this.handleSubmitFamilyId.bind(this);
+        this.closeUnknownGuestMessage = this.closeUnknownGuestMessage.bind(this);
+        this.closeRSVPCompleteMessage = this.closeRSVPCompleteMessage.bind(this);
 
         this.dynamodb = new aws.DynamoDB();
         this.converter = aws.DynamoDB.Converter;
@@ -37,12 +37,16 @@ export class RSVP extends React.Component {
     }
 
     async handleSubmit() {
-        await this.dynamodb
+        let response = await this.dynamodb
             .putItem({
                 TableName: process.env.REACT_APP_AWS_DYNAMODB_RSVP_TABLE,
                 Item: this.converter.marshall(this.state.family)
             })
             .promise();
+        
+        this.setState({
+            showRSVPCompleteMessage: true
+        });
     }
 
     handleFamilyIdChange(e) {
@@ -62,13 +66,28 @@ export class RSVP extends React.Component {
             .promise();
 
         if (response.Item === undefined) {
-            // TODO: Handle invalid family ID
+            this.setState({
+                showUnknownGuestMessage: true
+            });
+
             return;
         }
 
         let familyData = this.converter.unmarshall(response.Item);
         this.setState({
             family: familyData
+        });
+    }
+
+    closeUnknownGuestMessage() {
+        this.setState({
+            showUnknownGuestMessage: false
+        });
+    }
+
+    closeRSVPCompleteMessage() {
+        this.setState({
+            showRSVPCompleteMessage: false
         });
     }
 
@@ -104,7 +123,7 @@ export class RSVP extends React.Component {
                         </Col>
                     </Form.Row>
                 </Form>
-            )
+            );
         } else {
             body = (
                 <div className="Form">
@@ -136,8 +155,46 @@ export class RSVP extends React.Component {
                         </Form.Row>
                     </Form>
                 </div>
-            )
+            );
         }
+
+        const unknownGuestModal = (
+            <Modal show={this.state.showUnknownGuestMessage} onHide={this.closeUnknownGuestMessage}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Sorry!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    We couldn't find this invite ID in our database.<br/><br/>
+                    Please check your invite ID, which is enclosed along with your wedding invitation.<br/><br/>
+                    
+                    <i>If you've lost your invite ID, please contact Victor or Hee Hyun.</i>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={this.closeUnknownGuestMessage}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        )
+        
+        const rsvpCompleteModal = (
+            <Modal show={this.state.showRSVPCompleteMessage} onHide={this.closeRSVPCompleteMessage}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Thank you!</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Your RSVP is complete.<br/><br/>
+                    We look forward to seeing you at the wedding!<br/><br/>
+                    
+                    <i>Remember, you can always come back to make changes to your RSVP details.</i>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={this.closeRSVPCompleteMessage}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        );
 
         return (
             <div className="RSVP">
@@ -149,6 +206,8 @@ export class RSVP extends React.Component {
                     </ReactFitText>
                 </div>
                 { body }
+                { unknownGuestModal }
+                { rsvpCompleteModal }
             </div>
         );
     }
