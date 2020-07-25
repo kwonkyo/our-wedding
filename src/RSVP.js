@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import { uuid } from 'uuidv4';
 import { Guest } from './Guest.js';
-import { dynamodb, converter } from './services/aws.js';
+import { dynamodb, converter } from './services/AWS.js';
 
 export class RSVP extends React.Component {
     constructor(props) {
