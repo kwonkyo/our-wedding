@@ -4,7 +4,7 @@ This is a React application I made for our wedding guests. It allows guests to v
 
 ## Setup
 This application is designed to be integrated with any AWS account.
-You need to provide your AWS credentials as environment variables by creating an `.env` file with the following key value pairs:
+You need to provide your AWS credentials as environment variables by creating an `.env` file in the top-level directory with the following key value pairs:
 ```
 REACT_APP_AWS_REGION = <aws-region>
 REACT_APP_AWS_ACCESS_KEY_ID = <aws-access-key-id>
