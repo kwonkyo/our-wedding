@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap';
 import { uuid } from 'uuidv4';
 import { Guest } from './Guest.js';
-import { dynamodb, converter } from './services/AWS.js';
+import { aws } from './services/AWS.js';
 
 export class RSVP extends React.Component {
     constructor(props) {
@@ -25,6 +25,9 @@ export class RSVP extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFamilyIdChange = this.handleFamilyIdChange.bind(this);
         this.handleSubmitFamilyId = this.handleSubmitFamilyId.bind(this);
+
+        this.dynamodb = new aws.DynamoDB();
+        this.converter = aws.DynamoDB.Converter;
     }
 
     handleSelectGuest(index) {
@@ -34,14 +37,12 @@ export class RSVP extends React.Component {
     }
 
     async handleSubmit() {
-        let response = await dynamodb
+        await this.dynamodb
             .putItem({
                 TableName: process.env.REACT_APP_AWS_DYNAMODB_RSVP_TABLE,
-                Item: converter.marshall(this.state.family)
+                Item: this.converter.marshall(this.state.family)
             })
             .promise();
-
-        console.log(response);
     }
 
     handleFamilyIdChange(e) {
@@ -51,7 +52,7 @@ export class RSVP extends React.Component {
     }
 
     async handleSubmitFamilyId() {
-        let response = await dynamodb
+        let response = await this.dynamodb
             .getItem({
                 TableName: process.env.REACT_APP_AWS_DYNAMODB_RSVP_TABLE,
                 Key: {
@@ -65,7 +66,7 @@ export class RSVP extends React.Component {
             return;
         }
 
-        let familyData = converter.unmarshall(response.Item);
+        let familyData = this.converter.unmarshall(response.Item);
         this.setState({
             family: familyData
         });
