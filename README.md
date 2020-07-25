@@ -19,7 +19,7 @@ $ npm start
 
 ## Samples
 #### Home
-We had a photographer friend who took many of the photos as the website background. The website is fully compatible for desktop and mobile devices. The desktop background is actually two separate photos with a sloppy attempt to make it align it naturally side-by-side.<br/><br/>
+We had a photographer friend who took our photos throughout our engagement and wedding preparation period, some of which I used as the website background. The website is fully compatible for both desktop and mobile devices. The desktop background is actually two separate photos aligned side-by-side, with a sloppy attempt to make it look like one photo.<br/><br/>
 <img src="readme/home.PNG"/>
 <img src="readme/home-m.PNG"/>
 
