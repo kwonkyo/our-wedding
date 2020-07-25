@@ -16,3 +16,16 @@ To start the application, just run:
 ```
 $ npm start
 ```
+
+## Samples
+#### Home
+<img src="readme/home.PNG"/>
+<img src="readme/home-m.PNG"/>
+
+#### Details
+<img src="readme/details.PNG"/>
+
+#### RSVP Form
+<img src="readme/rsvp-1.PNG"/>
+<br/><br/>
+<img src="readme/rsvp-2.PNG"/>
