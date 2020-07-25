@@ -81,7 +81,6 @@ export class RSVP extends React.Component {
                                             e.preventDefault();
 
                                             await this.handleSubmitFamilyId();
-                                            console.log('foo');
                                         }
                                     }
                                 }
