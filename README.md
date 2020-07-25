@@ -1,7 +1,6 @@
 # Welcome!
 
-This is a React application I made for our wedding guests.<br/>
-It allows guests to view event details and RSVP online.<br/>
+This is a React application I made for our wedding guests. It allows guests to view event details and RSVP online.
 
 ## Setup
 This application is designed to be integrated with any AWS account.
