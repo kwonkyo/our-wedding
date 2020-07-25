@@ -33,8 +33,15 @@ export class RSVP extends React.Component {
         });
     }
 
-    handleSubmit() {
-        console.log(this.state.family);
+    async handleSubmit() {
+        let response = await dynamodb
+            .putItem({
+                TableName: process.env.REACT_APP_AWS_DYNAMODB_RSVP_TABLE,
+                Item: converter.marshall(this.state.family)
+            })
+            .promise();
+
+        console.log(response);
     }
 
     handleFamilyIdChange(e) {
@@ -121,7 +128,7 @@ export class RSVP extends React.Component {
                         </Tabs>
                         <Form.Row className="Submit">
                             <Col>
-                                <Button onClick={this.handleSubmit}>
+                                <Button onClick={async () => await this.handleSubmit()}>
                                     RSVP!
                                 </Button>
                             </Col>
