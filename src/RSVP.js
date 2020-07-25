@@ -46,7 +46,7 @@ export class RSVP extends React.Component {
     async handleSubmitFamilyId() {
         let response = await dynamodb
             .getItem({
-                TableName: 'wedding-guests',
+                TableName: process.env.REACT_APP_AWS_DYNAMODB_RSVP_TABLE,
                 Key: {
                     'family-id': {S: this.state.familyId}
                 }
