@@ -19,13 +19,16 @@ $ npm start
 
 ## Samples
 #### Home
+We had a photographer friend who took many of the photos as the website background. The website is fully compatible for desktop and mobile devices. The desktop background is actually two separate photos with a sloppy attempt to make it align it naturally side-by-side.<br/><br/>
 <img src="readme/home.PNG"/>
 <img src="readme/home-m.PNG"/>
 
 #### Details
+Our wedding was planned for October 2020 (remember COVID-19?), so there was a great deal of uncertainty on whether or not we would actually be able host in this beautiful Edmonton hotel. Fortunately, we made arrangements with the hotel to continue the arrangement in a smaller capacity with social distancing measures.<br/><br/>
 <img src="readme/details.PNG"/>
 
 #### RSVP Form
+The RSVP component was by far the most time-consuming. The idea was that there would be a 1-to-1 mapping between a physical wedding invitation and a "family", and we would prepopulate each family's RSVP forms with some basic information (e.g. the invited members in the family and their age groups), which they can access via an invite ID (inserted in their wedding invitations). This was all done with a DynamoDB database backend. Then all the guests have to do is make modifications to their existing RSVP forms.<br/><br/>
 <img src="readme/rsvp-1.PNG"/>
 <br/><br/>
 <img src="readme/rsvp-2.PNG"/>
