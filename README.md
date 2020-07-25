@@ -11,3 +11,8 @@ REACT_APP_AWS_ACCESS_KEY_ID = <aws-access-key-id>
 REACT_APP_AWS_SECRET_ACCESS_KEY = <aws-secret-access-key>
 REACT_APP_AWS_DYNAMODB_RSVP_TABLE = <table-name>
 ```
+
+To start the application, just run:
+```
+$ npm start
+```
