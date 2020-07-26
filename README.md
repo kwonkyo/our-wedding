@@ -1,11 +1,19 @@
-# Welcome!
+# our-wedding-js
 
-This is a React application I made to help our wedding guests view event details and RSVP online. It is a serverless app that communicates with DynamoDB via API Gateway.
+Is a React application I made to help our wedding guests view event details and RSVP online. It is a serverless website that communicates with DynamoDB via API Gateway. Its AWS backend stack is created using an infrastructure-as-code process with CloudFormation.
 
 ## Setup
-This application is deployed via S3 Static Hosting here: http://our-wedding-js.s3-website.us-east-2.amazonaws.com/.
+A copy of this application is deployed via S3 Static Hosting here: http://our-wedding-js.s3-website.ca-central-1.amazonaws.com/.
 
-However, to test the the application in your local machine, just run:
+There is also a CloudFormation template under `infrastructure/` for the backend stack creation.
+Once a CloudFormation stack is created using this template, the value of its output `OurWeddingApiEndpoint` must be set under `REACT_APP_API_ENDPOINT` inside an `.env` file of the working directory during the build.
+
+Then, you can build the application for static hosting:
+```
+$ npm run-script build
+```
+
+Or, test the application in your local machine - just run:
 ```
 $ npm start
 ```
@@ -17,7 +25,7 @@ We had a photographer friend who took our photos throughout our engagement and w
 <img src="readme/home-m.PNG"/>
 
 #### Details
-Our wedding was planned for October 2020 (remember COVID-19?), so there was a great deal of uncertainty on whether or not we would actually be able host in this beautiful Edmonton hotel. Fortunately, we made arrangements with the hotel to continue the arrangement in a smaller capacity with social distancing measures.<br/><br/>
+Our wedding was planned for October 2020 (remember COVID-19?), so there was a great deal of uncertainty on whether or not we would actually be able host in the beautiful Fairmont hotel. Fortunately, we made arrangements with the hotel to continue the arrangement in a smaller capacity with social distancing measures.<br/><br/>
 <img src="readme/details.PNG"/>
 
 #### RSVP Form

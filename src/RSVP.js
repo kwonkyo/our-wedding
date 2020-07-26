@@ -26,8 +26,8 @@ export class RSVP extends React.Component {
         this.closeUnknownGuestMessage = this.closeUnknownGuestMessage.bind(this);
         this.closeRSVPCompleteMessage = this.closeRSVPCompleteMessage.bind(this);
 
-        this.endpoint = "https://c4jf4wc25m.execute-api.us-east-2.amazonaws.com/production";
-        this.tableName = "wedding-guests";
+        this.endpoint = process.env.REACT_APP_API_ENDPOINT;
+        this.tableName = "our-wedding-rsvps";
 
         this.converter = aws.DynamoDB.Converter;
     }
@@ -42,7 +42,7 @@ export class RSVP extends React.Component {
         let familyData = this.converter.marshall(this.state.family);
         
         let response = await fetch(
-            `${this.endpoint}/rsvp`, {
+            `${this.endpoint}/put-rsvp`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -64,7 +64,7 @@ export class RSVP extends React.Component {
 
     async handleSubmitFamilyId() {
         let response = await fetch(
-            `${this.endpoint}/family`, {
+            `${this.endpoint}/get-rsvp`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

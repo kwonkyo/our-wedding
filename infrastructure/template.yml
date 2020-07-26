@@ -1,0 +1,226 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: "Creates DynamoDB tables, IAM roles and API Gateway resources for website backend."
+Outputs:
+    OurWeddingApiEndpoint:
+      Description: "API Endpoint URL"
+      Value: !Sub "https://${OurWeddingApi}.execute-api.${AWS::Region}.amazonaws.com/${OurWeddingApiProductionStage}"
+Resources:
+    # DynamoDB table for storing RSVPs
+    WeddingRsvpsDb:
+        Type: AWS::DynamoDB::Table
+        Properties:
+            TableName: our-wedding-rsvps
+            AttributeDefinitions:
+                - AttributeName: family-id
+                  AttributeType: S
+            KeySchema:
+                - AttributeName: family-id
+                  KeyType: HASH
+            BillingMode: PAY_PER_REQUEST
+
+    # IAM role with access to DynamoDB and trust relationship with API Gateway
+    ApiExecutionRole:
+        Type: AWS::IAM::Role
+        Properties:
+            RoleName: OurWeddingApiExecutionRole
+            Policies:
+                - PolicyName: DynamoDBAccessPolicy
+                  PolicyDocument: >-
+                    {
+                        "Version": "2012-10-17",
+                        "Statement": [
+                            {
+                                "Action": [
+                                    "dynamodb:GetItem",
+                                    "dynamodb:PutItem"
+                                ],
+                                "Effect": "Allow",
+                                "Resource": "*"
+                            }
+                        ]
+                    }
+            AssumeRolePolicyDocument: >-
+                {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": [
+                                    "apigateway.amazonaws.com"
+                                ]
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                }
+    
+    # REST API for RSVPs
+    OurWeddingApi:
+        Type: AWS::ApiGateway::RestApi
+        DependsOn: WeddingRsvpsDb
+        Properties:
+            Name: our-wedding-api
+    OurWeddingApiGetRsvpResource:
+        Type: AWS::ApiGateway::Resource
+        DependsOn: OurWeddingApi
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+            ParentId:
+                Fn::GetAtt: [OurWeddingApi, RootResourceId]
+            PathPart: get-rsvp
+    OurWeddingApiGetRsvpPostMethod:
+        Type: AWS::ApiGateway::Method
+        DependsOn: OurWeddingApiGetRsvpResource
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+            ResourceId:
+                Ref: OurWeddingApiGetRsvpResource
+            HttpMethod: POST
+            AuthorizationType: NONE
+            Integration:
+                IntegrationHttpMethod: POST
+                Credentials:
+                    Fn::GetAtt: [ApiExecutionRole, Arn]
+                Type: AWS
+                Uri: !Sub "arn:aws:apigateway:${AWS::Region}:dynamodb:action/GetItem"
+                IntegrationResponses:
+                    - StatusCode: 200
+                      ResponseParameters:
+                        method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                        method.response.header.Access-Control-Allow-Methods: "'POST,OPTIONS'"
+                        method.response.header.Access-Control-Allow-Origin: "'*'"
+                      ResponseTemplates:
+                        application/json: ''
+                PassthroughBehavior: WHEN_NO_TEMPLATES
+            MethodResponses:
+                - StatusCode: 200
+                  ResponseModels:
+                    application/json: 'Empty'
+                  ResponseParameters:
+                      method.response.header.Access-Control-Allow-Headers: false
+                      method.response.header.Access-Control-Allow-Methods: false
+                      method.response.header.Access-Control-Allow-Origin: false
+    OurWeddingApiGetRsvpOptionMethod:
+        Type: AWS::ApiGateway::Method
+        DependsOn: OurWeddingApiGetRsvpResource
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+            ResourceId:
+                Ref: OurWeddingApiGetRsvpResource
+            HttpMethod: OPTIONS
+            AuthorizationType: NONE
+            Integration:
+                IntegrationResponses:
+                - StatusCode: 200
+                  ResponseParameters:
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Methods: "'POST,OPTIONS'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                  ResponseTemplates:
+                      application/json: ''
+                RequestTemplates:
+                    application/json: '{"statusCode": 200}'
+                PassthroughBehavior: WHEN_NO_MATCH
+                Type: MOCK
+            MethodResponses:
+            - StatusCode: 200
+              ResponseModels:
+                  application/json: 'Empty'
+              ResponseParameters:
+                  method.response.header.Access-Control-Allow-Headers: false
+                  method.response.header.Access-Control-Allow-Methods: false
+                  method.response.header.Access-Control-Allow-Origin: false
+    OurWeddingApiPutRsvpResource:
+        Type: AWS::ApiGateway::Resource
+        DependsOn: OurWeddingApi
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+            ParentId:
+                Fn::GetAtt: [OurWeddingApi, RootResourceId]
+            PathPart: put-rsvp
+    OurWeddingApiPutRsvpPostMethod:
+        Type: AWS::ApiGateway::Method
+        DependsOn: OurWeddingApiPutRsvpResource
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+            ResourceId:
+                Ref: OurWeddingApiPutRsvpResource
+            HttpMethod: POST
+            AuthorizationType: NONE
+            Integration:
+                IntegrationHttpMethod: POST
+                Credentials:
+                    Fn::GetAtt: [ApiExecutionRole, Arn]
+                Type: AWS
+                Uri: !Sub "arn:aws:apigateway:${AWS::Region}:dynamodb:action/PutItem"
+                IntegrationResponses:
+                    - StatusCode: 200
+                      ResponseParameters:
+                        method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                        method.response.header.Access-Control-Allow-Methods: "'POST,OPTIONS'"
+                        method.response.header.Access-Control-Allow-Origin: "'*'"
+                      ResponseTemplates:
+                        application/json: ''
+                PassthroughBehavior: WHEN_NO_TEMPLATES
+            MethodResponses:
+                - StatusCode: 200
+                  ResponseModels:
+                    application/json: 'Empty'
+                  ResponseParameters:
+                      method.response.header.Access-Control-Allow-Headers: false
+                      method.response.header.Access-Control-Allow-Methods: false
+                      method.response.header.Access-Control-Allow-Origin: false
+    OurWeddingApiPutRsvpOptionMethod:
+        Type: AWS::ApiGateway::Method
+        DependsOn: OurWeddingApiPutRsvpResource
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+            ResourceId:
+                Ref: OurWeddingApiPutRsvpResource
+            HttpMethod: OPTIONS
+            AuthorizationType: NONE
+            Integration:
+                IntegrationResponses:
+                - StatusCode: 200
+                  ResponseParameters:
+                      method.response.header.Access-Control-Allow-Headers: "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'"
+                      method.response.header.Access-Control-Allow-Methods: "'POST,OPTIONS'"
+                      method.response.header.Access-Control-Allow-Origin: "'*'"
+                  ResponseTemplates:
+                      application/json: ''
+                RequestTemplates:
+                    application/json: '{"statusCode": 200}'
+                PassthroughBehavior: WHEN_NO_MATCH
+                Type: MOCK
+            MethodResponses:
+            - StatusCode: 200
+              ResponseModels:
+                  application/json: 'Empty'
+              ResponseParameters:
+                  method.response.header.Access-Control-Allow-Headers: false
+                  method.response.header.Access-Control-Allow-Methods: false
+                  method.response.header.Access-Control-Allow-Origin: false
+    OurWeddingApiDeployment:
+        Type: AWS::ApiGateway::Deployment
+        DependsOn:
+            - OurWeddingApiGetRsvpPostMethod
+            - OurWeddingApiPutRsvpPostMethod
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+    OurWeddingApiProductionStage:
+        Type: AWS::ApiGateway::Stage
+        Properties:
+            RestApiId:
+                Ref: OurWeddingApi
+            DeploymentId:
+                Ref: OurWeddingApiDeployment
+            StageName: production
