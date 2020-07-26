@@ -26,7 +26,9 @@ export class RSVP extends React.Component {
         this.closeUnknownGuestMessage = this.closeUnknownGuestMessage.bind(this);
         this.closeRSVPCompleteMessage = this.closeRSVPCompleteMessage.bind(this);
 
-        this.dynamodb = new aws.DynamoDB();
+        this.endpoint = "https://c4jf4wc25m.execute-api.us-east-2.amazonaws.com/production";
+        this.tableName = "wedding-guests";
+
         this.converter = aws.DynamoDB.Converter;
     }
 
@@ -37,13 +39,18 @@ export class RSVP extends React.Component {
     }
 
     async handleSubmit() {
-        let response = await this.dynamodb
-            .putItem({
-                TableName: process.env.REACT_APP_AWS_DYNAMODB_RSVP_TABLE,
-                Item: this.converter.marshall(this.state.family)
-            })
-            .promise();
+        let familyData = this.converter.marshall(this.state.family);
         
+        let response = await fetch(
+            `${this.endpoint}/rsvp`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    "TableName": this.tableName,
+                    "Item": familyData
+                })
+            });
+
         this.setState({
             showRSVPCompleteMessage: true
         });
@@ -56,16 +63,23 @@ export class RSVP extends React.Component {
     }
 
     async handleSubmitFamilyId() {
-        let response = await this.dynamodb
-            .getItem({
-                TableName: process.env.REACT_APP_AWS_DYNAMODB_RSVP_TABLE,
-                Key: {
-                    'family-id': {S: this.state.familyId}
-                }
-            })
-            .promise();
-
-        if (response.Item === undefined) {
+        let response = await fetch(
+            `${this.endpoint}/family`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    "TableName": this.tableName,
+                    "Key": {
+                        "family-id": {
+                            "S": this.state.familyId
+                        }
+                    }
+                })
+            });
+        
+        let data = (await response.json()).Item;
+    
+        if (data === undefined) {
             this.setState({
                 showUnknownGuestMessage: true
             });
@@ -73,9 +87,8 @@ export class RSVP extends React.Component {
             return;
         }
 
-        let familyData = this.converter.unmarshall(response.Item);
         this.setState({
-            family: familyData
+            family: this.converter.unmarshall(data)
         });
     }
 

@@ -3,16 +3,9 @@
 This is a React application I made for our wedding guests. It allows guests to view event details and RSVP online.
 
 ## Setup
-This application is designed to be integrated with any AWS account.
-You need to provide your AWS credentials as environment variables by creating an `.env` file in the top-level directory with the following key value pairs:
-```
-REACT_APP_AWS_REGION = <aws-region>
-REACT_APP_AWS_ACCESS_KEY_ID = <aws-access-key-id>
-REACT_APP_AWS_SECRET_ACCESS_KEY = <aws-secret-access-key>
-REACT_APP_AWS_DYNAMODB_RSVP_TABLE = <table-name>
-```
+This application is deployed via S3 Static Hosting here: http://our-wedding-js.s3-website.us-east-2.amazonaws.com/.
 
-To start the application, just run:
+However, to test the the application in your local machine, just run:
 ```
 $ npm start
 ```
@@ -28,7 +21,7 @@ Our wedding was planned for October 2020 (remember COVID-19?), so there was a gr
 <img src="readme/details.PNG"/>
 
 #### RSVP Form
-The RSVP component was by far the most time-consuming. The idea was that there would be a 1-to-1 mapping between a physical wedding invitation and a "family", and we would prepopulate each family's RSVP forms with some basic information (e.g. the invited members in the family and their age groups), which they can access via an invite ID (inserted in their wedding invitations). This was all done with a DynamoDB database backend. Then all the guests have to do is make modifications to their existing RSVP forms.<br/><br/>
+The RSVP component was by far the most time-consuming. The idea was that there would be a 1-to-1 mapping between a physical wedding invitation and a "family", and we would prepopulate each family's RSVP forms with some basic information (e.g. the invited members in the family and their age groups), which they can access via an invite ID (inserted in their wedding invitations). This was all done via an API Gateway interface to standard DynamoDB operations. Then all the guests have to do is make modifications to their existing RSVP forms.<br/><br/>
 <img src="readme/rsvp-1.PNG"/>
 <br/><br/>
 <img src="readme/rsvp-2.PNG"/>
