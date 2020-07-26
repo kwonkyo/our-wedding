@@ -1,6 +1,6 @@
 # Welcome!
 
-This is a React application I made for our wedding guests. It allows guests to view event details and RSVP online.
+This is a React application I made to help our wedding guests view event details and RSVP online. It is a serverless app that communicates with DynamoDB via API Gateway.
 
 ## Setup
 This application is deployed via S3 Static Hosting here: http://our-wedding-js.s3-website.us-east-2.amazonaws.com/.
