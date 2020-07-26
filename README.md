@@ -13,7 +13,7 @@ Then, you can build the application for static hosting:
 $ npm run-script build
 ```
 
-Or, test the application in your local machine - just run:
+Or, to test the application in your local machine - just run:
 ```
 $ npm start
 ```
@@ -25,7 +25,7 @@ We had a photographer friend who took our photos throughout our engagement and w
 <img src="readme/home-m.PNG"/>
 
 #### Details
-Our wedding was planned for October 2020 (remember COVID-19?), so there was a great deal of uncertainty on whether or not we would actually be able host in the beautiful Fairmont hotel. Fortunately, we made arrangements with the hotel to continue the arrangement in a smaller capacity with social distancing measures.<br/><br/>
+Our wedding was planned for October 2020 (remember COVID-19?), so there was a great deal of uncertainty on whether or not we would actually be able host in the beautiful Fairmont Hotel Macdonald. Fortunately, we made arrangements with the hotel to continue the arrangement in a smaller capacity with social distancing measures.<br/><br/>
 <img src="readme/details.PNG"/>
 
 #### RSVP Form
