@@ -26,7 +26,7 @@ $ npm start
 <img src="public/readme/details.PNG"/>
 
 #### RSVP Form
-The RSVP component was by far the most time-consuming. The idea was that there would be a 1-to-1 mapping between a physical wedding invitation and a "family", and we would prepopulate each family's RSVP forms with some basic information (e.g. the invited members in the family and their age groups), which they can access via an invite ID (inserted in their wedding invitations). This was all done via an API Gateway interface to standard DynamoDB operations. Then all the guests have to do is make modifications to their existing RSVP forms.<br/><br/>
+<i>(The RSVP component was by far the most time-consuming. The idea was that there would be a 1-to-1 mapping between a physical wedding invitation and a "family", and we would prepopulate each family's RSVP forms with some basic information (e.g. the invited members in the family and their age groups), which they can access via an invite ID (inserted in their wedding invitations). This was all done via an API Gateway interface to standard DynamoDB operations. Then all the guests have to do is make modifications to their existing RSVP forms.)</i><br/><br/>
 <img src="public/readme/rsvp-1.PNG"/>
 <br/><br/>
 <img src="public/readme/rsvp-2.PNG"/>
