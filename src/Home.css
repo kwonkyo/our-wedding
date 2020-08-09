@@ -7,11 +7,14 @@
 .Banner .PrimaryText {
     margin: 0 auto;
     max-width: 500px;
+    text-shadow: 1.5px 1.5px 0 white;
+    line-height: 112px;
 }
 
 .Banner .HighlightedText {
     color: white;
     font-style: italic;
+    text-shadow: none;
 }
 
 .OurNames {

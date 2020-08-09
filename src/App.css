@@ -48,8 +48,8 @@
 
 .Nav .NavButton {
   display: inline-block;
-  height: 40px;
-  width: 90px;
+  height: 50px;
+  width: 110px;
 }
 
 .Nav span {
@@ -57,7 +57,9 @@
   height: inherit;
   margin: auto;
   width: 50%;
-  font-size: 18px;
+  font-size: 23px;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px black;
   color: white;
   vertical-align: middle;
 }
@@ -68,22 +70,17 @@
 }
 
 .RSVPButton:hover {
-  background-color: white;
   opacity: 0.9;
 }
 
 .NavButton span:hover {
-  color: black;
+  opacity: 0.8;
 }
 
 .Title h1 {
   font-size: 100px;
   margin-bottom: 0;
   color: white;
-}
-
-.PrimaryText {
-  text-shadow: 1px 1px 0 white;
 }
 
 .Footer {
@@ -94,14 +91,4 @@
   font-weight: bold;
   color: black;
   z-index: -1;
-}
-
-@media (max-width: 1024px) {
-  .App {
-      background: url('/static/home-bg-mobile.jpg') no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-  }
 }

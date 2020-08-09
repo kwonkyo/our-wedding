@@ -1,8 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap');
-
 .container {
     margin: auto;
     max-width: 500px;
+}
+
+.container * {
+    text-shadow: 1px 1px 1px black;
 }
 
 .row {
@@ -14,7 +16,6 @@
     position: relative;
     top: 25px;
     color: white;
-    font-family: 'Cormorant Garamond', serif;
     font-size: 21px;
     font-weight: bold;
     display: inline-block;
@@ -22,7 +23,7 @@
 }
 
 .When .Time {
-    color: #f9b862;
+    color: #ffffff;
     font-size: 25px;
 }
 
@@ -30,7 +31,6 @@
     position: relative;
     top: 25px;
     color: white;
-    font-family: 'Cormorant Garamond', serif;
     font-size: 21px;
     font-weight: bold;
     display: inline-block;
@@ -38,16 +38,15 @@
 }
 
 .Where .Address {
-    font-size: 17px;
+    font-size: 18px;
+    color: #ebebeb;
 }
 
-.Details iframe {
-    width: 50vh;
-    height: 40vh;
-    min-width: 300px;
-    min-height: 300px;
-    max-width: 100%;
-    margin-bottom: 50px;
-    opacity: .85;
-    margin-top: 50px;
+.AdditionalInformation {
+    margin-top: 250px !important;
+    font-style: italic;
+}
+
+.AdditionalInformation p {
+    color: white;
 }
