@@ -37,7 +37,7 @@
 
 .Nav {
   position: relative;
-  top: 20px;
+  top: 30px;
   right: 20px;
   float: right;
 }
@@ -65,6 +65,7 @@
 }
 
 .RSVPButton {
+  left: 5px;
   border: 2px solid white;
   border-radius: 3px;
 }
@@ -78,7 +79,6 @@
 }
 
 .Title h1 {
-  font-size: 100px;
   margin-bottom: 0;
   color: white;
 }
@@ -91,4 +91,29 @@
   font-weight: bold;
   color: black;
   z-index: -1;
+}
+
+@media (max-width: 801px) {
+  .Nav .NavButton {
+    display: inline-block;
+    height: 40px;
+    width: 85px;
+  }
+  
+  .Nav span {
+    display: table-cell;
+    height: inherit;
+    margin: auto;
+    width: 50%;
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px black;
+    color: white;
+    vertical-align: middle;
+  }
+  
+  .RSVPButton {
+    border: 2px solid white;
+    border-radius: 3px;
+  }
 }

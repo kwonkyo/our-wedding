@@ -3,6 +3,7 @@ import './App.css';
 import { Home } from './Home.js';
 import { RSVP } from './RSVP.js';
 import { Details } from './Details.js';
+import { Gallery } from './Gallery.js';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +21,11 @@ function App() {
             <img className="Monogram" src="android-chrome-512x512.png"/>
           </Link>
           <div className="Nav">
+            <Link to="/gallery">
+              <div className="NavButton">
+                <span>Gallery</span>
+              </div>
+            </Link>
             <Link to="/details">
               <div className="NavButton">
                 <span>Details</span>
@@ -37,6 +43,7 @@ function App() {
           <Route exact path="/" component={Home}/>
           <Route exact path='/rsvp' component={RSVP}/>
           <Route exact path='/details' component={Details}/>
+          <Route exact path='/gallery' component={Gallery}/>
         </Switch>
       </Router>
     </div>
