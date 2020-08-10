@@ -50,3 +50,15 @@
 .AdditionalInformation p {
     color: white;
 }
+
+@media (max-width: 640px)  {
+    .AdditionalInformation {
+        margin-top: 125px !important;
+    }
+
+    .AdditionalInformation p {
+        margin-top: 2px;
+        margin-bottom: 2px;
+        font-size: 14px;
+    }
+}
