@@ -13,9 +13,13 @@ export class Home extends React.Component {
                         </h1>
                     </ReactFitText>
                 </div>
-                <div className="OurNames">
+                <div className="SecondaryText">
                     <ReactFitText compressor={1} maxFontSize={25}>
-                        <p>Hee Hyun & Victor</p>
+                        <p>
+                            Hee Hyun & Victor
+                            <br/>
+                            10/10/2020
+                        </p>
                     </ReactFitText>
                 </div>
             </div>
