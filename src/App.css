@@ -83,6 +83,11 @@
 }
 
 @media (max-width: 640px) {
+  .App {
+    background: url('/static/home-bg-mobile.jpg') no-repeat center center fixed;
+    background-size: 720px;
+  }
+
   .Nav .NavButton {
     display: inline-block;
     height: 34px;
@@ -104,12 +109,5 @@
   .RSVPButton {
     border: 2px solid white;
     border-radius: 3px;
-  }
-}
-
-@media (max-width: 640px)  {
-  .App {
-    background: url('/static/home-bg-mobile.jpg') no-repeat center center fixed;
-    background-size: 720px;
   }
 }

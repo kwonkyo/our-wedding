@@ -72,13 +72,8 @@
     background: url('/static/home-bg-mobile.jpg') no-repeat center center fixed;
     background-size: 720px;
   }
-  .SecondaryText {
-    position: relative;
-    top: 100px;
-    margin: auto;
-    width: 100%;
-    font-family: 'Playfair Display', serif;
-    font-size: 21px;
-    color: white;
+
+  .Banner .PrimaryText {
+      line-height: 80px;
   }
 }
