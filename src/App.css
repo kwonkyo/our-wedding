@@ -82,11 +82,11 @@
   color: white;
 }
 
-@media (max-width: 801px) {
+@media (max-width: 640px) {
   .Nav .NavButton {
     display: inline-block;
-    height: 40px;
-    width: 85px;
+    height: 34px;
+    width: 60px;
   }
   
   .Nav span {
@@ -94,7 +94,7 @@
     height: inherit;
     margin: auto;
     width: 50%;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     text-shadow: 2px 2px 2px black;
     color: white;
@@ -104,5 +104,12 @@
   .RSVPButton {
     border: 2px solid white;
     border-radius: 3px;
+  }
+}
+
+@media (max-width: 640px)  {
+  .App {
+    background: url('/static/home-bg-mobile.jpg') no-repeat center center fixed;
+    background-size: 720px;
   }
 }

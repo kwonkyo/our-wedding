@@ -27,6 +27,11 @@
     font-size: 25px;
 }
 
+.Date {
+    margin: auto !important;
+    max-width: 400px;
+}
+
 .Where {
     position: relative;
     top: 25px;

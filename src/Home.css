@@ -15,7 +15,6 @@
     color: white;
     font-style: italic;
     text-shadow: none;
-    opacity: 0.6;
 }
 
 .OurNames {
@@ -66,4 +65,20 @@
     opacity: 0;
     animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
+}
+
+@media (max-width: 640px)  {
+  .App {
+    background: url('/static/home-bg-mobile.jpg') no-repeat center center fixed;
+    background-size: 720px;
+  }
+  .OurNames {
+    position: relative;
+    top: 100px;
+    margin: auto;
+    width: 100%;
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: white;
+  }
 }
