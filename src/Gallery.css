@@ -13,6 +13,7 @@
     border-radius: 5px;
     object-fit: cover;
     opacity: 0.98;
+    box-shadow: 1px 1px 3px black;
 }
 
 @media (min-width: 320px)  {

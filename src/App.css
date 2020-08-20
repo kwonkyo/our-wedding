@@ -80,6 +80,7 @@
 .Title h1 {
   margin-bottom: 0;
   color: white;
+  text-shadow: 1px 1px 2px black;
 }
 
 @media (max-width: 640px) {

@@ -109,7 +109,7 @@ export class RSVP extends React.Component {
         if (this.state.family === null) {
             body = (
                 <Form className="Form">
-                    <h3 style={{color: "white", textShadow: "1px 1px 1px black"}}>1. Let's start with your invite ID.</h3>
+                    <h3 className="FormHeader">1. Let's start with your invite ID.</h3>
                     <br/>
                     <Form.Row>
                         <Col>
@@ -141,7 +141,7 @@ export class RSVP extends React.Component {
             body = (
                 <div className="Form">
                     <Form>
-                        <h3 style={{color: "white", textShadow: "1px 1px 1px black"}}>2. Okay, time to RSVP!</h3>
+                        <h3 className="FormHeader">2. Okay, time to RSVP!</h3>
                         <br/>
                         <Tabs
                             activeKey={this.state.activeGuestIndex}
