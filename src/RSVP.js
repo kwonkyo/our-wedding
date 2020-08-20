@@ -41,7 +41,7 @@ export class RSVP extends React.Component {
     async handleSubmit() {
         let familyData = this.converter.marshall(this.state.family);
         
-        let response = await fetch(
+        await fetch(
             `${this.endpoint}/put-rsvp`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
