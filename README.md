@@ -3,7 +3,7 @@
 Is a React application I made to help our wedding guests view event details and RSVP online. It is a serverless website that communicates with DynamoDB via API Gateway. Its AWS backend stack is created using an infrastructure-as-code process with CloudFormation.
 
 ## Setup
-A copy of this application is deployed via S3 Static Hosting here: http://our-wedding-js.s3-website.us-east-2.amazonaws.com.
+A copy of this application is deployed via S3 Static Hosting here: http://www.heehyun-and-victor.com.
 
 There is also a CloudFormation template under `infrastructure/` for the backend stack creation.
 Once a CloudFormation stack is created using this template, the value of its output `OurWeddingApiEndpoint` must be set under `REACT_APP_API_ENDPOINT` inside an `.env` file of the working directory during the build.
