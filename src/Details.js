@@ -34,7 +34,7 @@ export class Details extends React.Component {
                     We suggest a few options for parking:
                     <br/><br/>
                     1. If you don't mind walking a few blocks, you can click <a href="https://parking.manulifeplace.com/">here</a> to reserve a spot in the Manulife Place underground parking, which is 8 minutes walk away from the hotel.<br/>
-                    2. If you have mobility issues or need parking in the hotel grounds for any reason, please contact Hee Hyun or Victor directly, and we can book a parking spot for you in the hotel parking lot.
+                    2. If you have mobility issues or need parking in the hotel grounds for any reason, please contact Hee Hyun or Victor directly, and we'll book a parking spot for you in the hotel parking lot.
                     <br/><br/>
                     If you are familiar with the area, you can also try to find street parking or public parking in the vicinity.
                 </Modal.Body>
