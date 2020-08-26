@@ -31,12 +31,19 @@ export class Details extends React.Component {
                 <Modal.Body>
                     We understand that finding parking in downtown Edmonton is tough, and we appreciate you coming to celebrate our wedding despite these challenges!
                     <br/><br/>
-                    We suggest a few options for parking:
+                    <i>Unfortunately, our venue doesn't offer free public parking. With our apologies, we suggest the following options for parking:</i>
                     <br/><br/>
-                    1. If you don't mind walking a few blocks, you can click <a href="https://parking.manulifeplace.com/">here</a> to reserve a spot in the Manulife Place underground parking, which is 8 minutes walk away from the hotel.<br/>
+                    1. There are several parking options in the vicinity of the hotel:
+                    <ul>
+                        <li><a href="https://www.parkme.com/lot/99301/library-parkade-edmonton-ab-canada">Library Parkade</a></li>
+                        <li><a href="https://lots.impark.com//imp/en?latlng=53.544389,-113.49092669999999#details=2,308">Scotia Place Parkade</a></li>
+                        <li><a href="https://lots.impark.com//imp/en?latlng=53.544389,-113.49092669999999#details=2,373">Commerce Place Parkade</a></li>
+                        <li><a href="https://parking.manulifeplace.com/">Manulife Place Parkade</a></li>
+                    </ul>
                     2. If you have mobility issues or need parking in the hotel grounds for any reason, please contact Hee Hyun or Victor directly, and we'll book a parking spot for you in the hotel parking lot.
                     <br/><br/>
-                    If you are familiar with the area, you can also try to find street parking or public parking in the vicinity.
+                    If you are familiar with the area, you can also try to find street parking or other public parking in the vicinity.
+                    Click <a href="https://en.parkopedia.ca/parking/locations/10060_100_street_nw_edmonton_alberta_t5j_3z5_canada_a6bbc3x296yck1h388/?country=ca&arriving=202010101430&leaving=202010102100">here</a> for a map of parking options in the area.
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="primary" onClick={this.toggleParkingInformationModal}>
