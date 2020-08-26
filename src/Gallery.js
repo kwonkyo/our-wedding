@@ -8,20 +8,8 @@ export class Gallery extends React.Component {
         super(props);
 
         this.state = {
-            Gallery: [
-                'gallery/downtown-1.jpg',
-                'gallery/bw-1.jpg',
-                'gallery/downtown-2.jpg',
-                'gallery/downtown-3.jpg',
-                'gallery/downtown-4.jpg',
-                'gallery/downtown-5.jpg',
-                'gallery/bw-2.jpg',
-                'gallery/park-1.jpg',
-                'gallery/park-2.jpg',
-                'gallery/park-3.jpg',
-                'gallery/park-4.jpg',
-                'gallery/park-5.jpg'
-            ]
+            Gallery: [...Array(38).keys()]
+                .map(x => `gallery/image-${String(x + 1).padStart(3, "0")}.jpg`)
         };
     }
 
