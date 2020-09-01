@@ -8,7 +8,7 @@ export class Gallery extends React.Component {
         super(props);
 
         this.state = {
-            Gallery: [...Array(38).keys()]
+            Gallery: [...Array(50).keys()]
                 .map(x => `gallery/image-${String(x + 1).padStart(3, "0")}.jpg`)
         };
     }
