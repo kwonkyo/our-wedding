@@ -35,7 +35,7 @@ export class Details extends React.Component {
                     <br/><br/>
                     1. There are several parking options in the vicinity of the hotel:
                     <ul>
-                        <li><a href="https://www.parkme.com/lot/99301/library-parkade-edmonton-ab-canada">Library Parkade</a></li>
+                        <li><a href="https://www.parkme.com/lot/99265/library-parkade-edmonton-ab-canada">Library Parkade</a></li>
                         <li><a href="https://lots.impark.com//imp/en?latlng=53.544389,-113.49092669999999#details=2,308">Scotia Place Parkade</a></li>
                         <li><a href="https://lots.impark.com//imp/en?latlng=53.544389,-113.49092669999999#details=2,373">Commerce Place Parkade</a></li>
                         <li><a href="https://parking.manulifeplace.com/">Manulife Place Parkade</a></li>
